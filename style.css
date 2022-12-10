@@ -33,8 +33,9 @@ html, body {
     width: 280px;
     font-size: 20px;
     padding: 10px 4px;
-    border: 2px solid;
+    border: 2px solid black;
     border-radius: 5px;
     margin: 0;
     background-color:blue;
+    color: white;
 }
