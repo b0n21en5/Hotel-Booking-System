@@ -1,3 +1,4 @@
+import { isObjectIdOrHexString } from 'mongoose';
 import Hotel from '../models/hotel.js';
 import Room from '../models/room.js';
 
@@ -41,10 +42,9 @@ export const getHotel = async (req, res, next) => {
 }
 
 export const getHotels = async (req, res, next) => {
+    const { min, max, limits,  ...others} = req.query;
     try {
-        const hotels = await Hotel.find({
-            ...isObjectIdOrHexString, cheapestPrice: { $gt: min || 1, $lt: max || 999},
-        }).limit(req.query.limit);
+        const hotels = await Hotel.find({...others, cheapestPrice:{ $gt: min | 1, $lt: max || 999}, }).limit(limits);
         res.status(200).json(hotels);
     } catch (error) {
         next(error);
