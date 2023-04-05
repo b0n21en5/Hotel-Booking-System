@@ -1,5 +1,4 @@
-import { createContext, useReducer } from "react";
-import { useEffect } from "react";
+import { createContext, useReducer, useEffect } from "react";
 
 const INITIAL_STATE = {
   user:JSON.parse(localStorage.getItem("user")) || null,
