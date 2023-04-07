@@ -26,11 +26,11 @@ const NewHotel = () => {
   const handleClick = async (e) => {
     e.preventDefault();
     try {
-      const list = Promise.all(Object.values(files).map( async(file)=> {
+      const list = await Promise.all(Object.values(files).map( async(file)=> {
         const data = new FormData();
         data.append("file", file);
         data.append("upload_preset", "upload");
-        const uploadRes = await axios.post("http://api/cloudinary.com/v1_1/dlhfsa5gl/image/upload", data);
+        const uploadRes = await axios.post("https://api.cloudinary.com/v1_1/dlhfsa5gl/image/upload", data);
 
         const { url } = uploadRes.data;
 
@@ -41,9 +41,9 @@ const NewHotel = () => {
         ...info, rooms, photos:list
       }
 
-      await axios.post("/hotels", newHotel)
+      await axios.post('/hotels', newHotel)
     } catch (error) {
-      
+      console.log(error);
     }
   }
 
