@@ -11,7 +11,7 @@ import {
   faCircleXmark,
   faLocationDot,
 } from "@fortawesome/free-solid-svg-icons";
-import { useState,useContext } from "react";
+import { useState, useContext } from "react";
 import useFetch from "../../hooks/useFetch";
 import { useLocation, useNavigate } from "react-router-dom";
 import { SearchContext } from "../../context/SearchContext";
@@ -38,7 +38,7 @@ const Hotel = () => {
     return dayDiff;
   }
 
-  const days =  dayDifference(dates[0].endDate, dates[0].startDate);
+  const days = dayDifference(dates[0].endDate, dates[0].startDate);
 
   const handleOpen = (i) => {
     setSlideNumber(i);
@@ -57,13 +57,13 @@ const Hotel = () => {
     setSlideNumber(newSlideNumber);
   };
 
-  const handleClick = () => {
-    if(user){
+  const handleBook = () => {
+    if (user) {
       setOpenModal(true);
-    }else{
-      navigate("/login")
+    } else {
+      navigate("/login");
     }
-  }
+  };
 
   return (
     <div>
@@ -110,7 +110,8 @@ const Hotel = () => {
               Excellent location – {data.distance}m from center
             </span>
             <span className="hotelPriceHighlight">
-              Book a stay over ${data.cheapestPrice} at this property and get a free airport taxi
+              Book a stay over ${data.cheapestPrice} at this property and get a
+              free airport taxi
             </span>
             <div className="hotelImages">
               {data.photos?.map((photo, i) => (
@@ -127,9 +128,7 @@ const Hotel = () => {
             <div className="hotelDetails">
               <div className="hotelDetailsTexts">
                 <h1 className="hotelTitle">{data.title}</h1>
-                <p className="hotelDesc">
-                  {data.description}
-                </p>
+                <p className="hotelDesc">{data.description}</p>
               </div>
               <div className="hotelDetailsPrice">
                 <h1>Perfect for a {days}-night stay!</h1>
@@ -138,9 +137,10 @@ const Hotel = () => {
                   excellent location score of 9.8!
                 </span>
                 <h2>
-                  <b>${days * data.cheapestPrice * options.room}</b> ({days} nights)
+                  <b>${days * data.cheapestPrice * options.room}</b> ({days}{" "}
+                  nights)
                 </h2>
-                <button onClick={handleClick}>Reserve or Book Now!</button>
+                <button onClick={handleBook}>Reserve or Book Now!</button>
               </div>
             </div>
           </div>

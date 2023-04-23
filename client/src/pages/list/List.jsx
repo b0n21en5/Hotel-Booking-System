@@ -21,9 +21,9 @@ const List = () => {
     `/hotels?city=${destination}&min=${min || 0}&max=${max || 999}`
   );
 
-  const handleClick = () =>{
-    reFetch()
-  }
+  const handleClick = () => {
+    reFetch();
+  };
 
   return (
     <div>
@@ -58,13 +58,21 @@ const List = () => {
                   <span className="lsOptionText">
                     Min price <small>per night</small>
                   </span>
-                  <input type="number" onChange={e=>setMin(e.target.value)} className="lsOptionInput" />
+                  <input
+                    type="number"
+                    onChange={(e) => setMin(e.target.value)}
+                    className="lsOptionInput"
+                  />
                 </div>
                 <div className="lsOptionItem">
                   <span className="lsOptionText">
                     Max price <small>per night</small>
                   </span>
-                  <input type="number" onChange={e=>setMax(e.target.value)} className="lsOptionInput" />
+                  <input
+                    type="number"
+                    onChange={(e) => setMax(e.target.value)}
+                    className="lsOptionInput"
+                  />
                 </div>
                 <div className="lsOptionItem">
                   <span className="lsOptionText">Adult</span>

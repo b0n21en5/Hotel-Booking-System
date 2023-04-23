@@ -47,10 +47,10 @@ const Header = ({ type }) => {
     });
   };
 
-  const {dispatch} = useContext(SearchContext)
+  const { dispatch } = useContext(SearchContext);
 
   const handleSearch = () => {
-    dispatch({type:"NEW_SEARCH", payload:{destination,dates,options}})
+    dispatch({ type: "NEW_SEARCH", payload: { destination, dates, options } });
     navigate("/hotels", { state: { destination, dates, options } });
   };
 
@@ -71,6 +71,10 @@ const Header = ({ type }) => {
             <span>Flights</span>
           </div>
           <div className="headerListItem">
+            <FontAwesomeIcon icon={faPlane} />
+            <span>Flight + Hotel</span>
+          </div>
+          <div className="headerListItem">
             <FontAwesomeIcon icon={faCar} />
             <span>Car rentals</span>
           </div>
@@ -85,14 +89,10 @@ const Header = ({ type }) => {
         </div>
         {type !== "list" && (
           <>
-            <h1 className="headerTitle">
-              A lifetime of discounts? It's Genius.
-            </h1>
-            <p className="headerDesc">
-              Get rewarded for your travels – unlock instant savings of 10% or
-              more with a free booking account
-            </p>
-            {!user && <button className="headerBtn">Sign in / Register</button>}
+            <h1 className="headerTitle">Find your next stay</h1>
+            <h2 className="headerDesc">
+              Search low prices on hotels, homes and much more...
+            </h2>
             <div className="headerSearch">
               <div className="headerSearchItem">
                 <FontAwesomeIcon icon={faBed} className="headerIcon" />
