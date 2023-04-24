@@ -11,12 +11,24 @@ import NotificationsNoneIcon from "@mui/icons-material/NotificationsNone";
 import SettingsSystemDaydreamOutlinedIcon from "@mui/icons-material/SettingsSystemDaydreamOutlined";
 import PsychologyOutlinedIcon from "@mui/icons-material/PsychologyOutlined";
 import AccountCircleOutlinedIcon from "@mui/icons-material/AccountCircleOutlined";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { DarkModeContext } from "../../context/darkModeContext";
 import { useContext } from "react";
 
 const Sidebar = () => {
   const { dispatch } = useContext(DarkModeContext);
+  const navigate = useNavigate();
+
+  const handleProfile = () => {
+    const { _id } = JSON.parse(localStorage.getItem("user"));
+    navigate(`/users/${_id}`);
+  };
+
+  const handleLogout = (e) => {
+    e.preventDefault();
+    localStorage.removeItem("user");
+    navigate("/login");
+  };
   return (
     <div className="sidebar">
       <div className="top">
@@ -78,13 +90,15 @@ const Sidebar = () => {
             <span>Settings</span>
           </li>
           <p className="title">USER</p>
-          <li>
+          <li onClick={handleProfile}>
             <AccountCircleOutlinedIcon className="icon" />
             <span>Profile</span>
           </li>
           <li>
-            <ExitToAppIcon className="icon" />
-            <span>Logout</span>
+            <div onClick={handleLogout}>
+              <ExitToAppIcon className="icon" />
+              <span>Logout</span>
+            </div>
           </li>
         </ul>
       </div>

@@ -8,6 +8,7 @@ import ChatBubbleOutlineOutlinedIcon from "@mui/icons-material/ChatBubbleOutline
 import ListOutlinedIcon from "@mui/icons-material/ListOutlined";
 import { DarkModeContext } from "../../context/darkModeContext";
 import { useContext } from "react";
+import { Toaster } from "react-hot-toast";
 
 const Navbar = () => {
   const { dispatch } = useContext(DarkModeContext);
@@ -19,6 +20,7 @@ const Navbar = () => {
           <input type="text" placeholder="Search..." />
           <SearchOutlinedIcon />
         </div>
+        <Toaster />
         <div className="items">
           <div className="item">
             <LanguageOutlinedIcon className="icon" />

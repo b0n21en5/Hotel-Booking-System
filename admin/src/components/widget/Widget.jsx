@@ -4,8 +4,10 @@ import PersonOutlinedIcon from "@mui/icons-material/PersonOutlined";
 import AccountBalanceWalletOutlinedIcon from "@mui/icons-material/AccountBalanceWalletOutlined";
 import ShoppingCartOutlinedIcon from "@mui/icons-material/ShoppingCartOutlined";
 import MonetizationOnOutlinedIcon from "@mui/icons-material/MonetizationOnOutlined";
+import { useNavigate } from "react-router-dom";
 
 const Widget = ({ type }) => {
+  const navigate = useNavigate();
   let data;
 
   //temporary
@@ -17,7 +19,8 @@ const Widget = ({ type }) => {
       data = {
         title: "USERS",
         isMoney: false,
-        link: "See all users",
+        link: "users",
+        linkTitle: "See all users",
         icon: (
           <PersonOutlinedIcon
             className="icon"
@@ -33,7 +36,8 @@ const Widget = ({ type }) => {
       data = {
         title: "ORDERS",
         isMoney: false,
-        link: "View all orders",
+        link: "orders",
+        linkTitle: "View all orders",
         icon: (
           <ShoppingCartOutlinedIcon
             className="icon"
@@ -49,7 +53,8 @@ const Widget = ({ type }) => {
       data = {
         title: "EARNINGS",
         isMoney: true,
-        link: "View net earnings",
+        link: "earnings",
+        linkTitle: "View net earnings",
         icon: (
           <MonetizationOnOutlinedIcon
             className="icon"
@@ -62,7 +67,8 @@ const Widget = ({ type }) => {
       data = {
         title: "BALANCE",
         isMoney: true,
-        link: "See details",
+        link: "details",
+        linkTitle: "See details",
         icon: (
           <AccountBalanceWalletOutlinedIcon
             className="icon"
@@ -78,6 +84,10 @@ const Widget = ({ type }) => {
       break;
   }
 
+  const handleLink = () => {
+    navigate(`/${data.link}`);
+  };
+
   return (
     <div className="widget">
       <div className="left">
@@ -85,7 +95,9 @@ const Widget = ({ type }) => {
         <span className="counter">
           {data.isMoney && "$"} {amount}
         </span>
-        <span className="link">{data.link}</span>
+        <span className="link" onClick={handleLink}>
+          {data.linkTitle}
+        </span>
       </div>
       <div className="right">
         <div className="percentage positive">
